@@ -1,0 +1,47 @@
+---
+config:
+  theme: neo-dark
+---
+classDiagram
+    class Concesionario{
+      +nombre
+      +direccion
+      +gestionarInventario()
+      +registrarVenta()
+    }
+    class Inventario{
+      +vehiculos
+      +agregarVehiculo()
+      +eliminarVehiculo()
+      +buscarVehiculo()
+    }
+    class Vehiculo{
+      +marca
+      +modelo
+      +año
+      +precio
+      +estado
+    }
+    class Cliente{
+      +nombre
+      +documento
+      +contacto
+      +comprarVehiculo()
+    }
+    class Venta{
+      +fecha
+      +monto
+      +generarFactura()
+    }
+    class Empleado{
+      +nombre
+      +cargo
+      +registrarVenta()
+      +gestionarInventario()
+    }
+    Concesionario "1" --* "1" Inventario
+    Inventario "1" --* "many" Vehiculo
+    Cliente "1" --> "many" Venta
+    Venta "1" --* "1" Vehiculo
+    Venta "1" --* "1" Cliente
+    Empleado "1" --> "many" Venta
